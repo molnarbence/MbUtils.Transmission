@@ -1,9 +1,6 @@
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
 using System.Text.Json;
 using FakeApi;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
