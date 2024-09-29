@@ -1,0 +1,20 @@
+﻿name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:8.0
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
