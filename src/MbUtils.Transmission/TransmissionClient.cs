@@ -5,7 +5,7 @@ namespace MbUtils.Transmission;
 internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionClient
 {
    private readonly HttpClient _httpClient = httpClient;
-   private string? _sessionId;
+   private static string? _sessionId;
 
    public readonly IReadOnlyList<string> _listTorrentsFields = [
       "id",
