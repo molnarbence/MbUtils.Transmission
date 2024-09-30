@@ -1,4 +1,5 @@
-﻿using DotNet.Testcontainers.Builders;
+﻿using System.Net;
+using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
 using DotNet.Testcontainers.Images;
 
@@ -30,6 +31,7 @@ public class FakeApiFixture : IAsyncLifetime
       _container = new ContainerBuilder()
          .WithImage(_fakeApiImage)
          .WithPortBinding(8080, assignRandomHostPort: true)
+         .WithWaitStrategy(Wait.ForUnixContainer().UntilHttpRequestIsSucceeded(r => r.ForPort(8080).ForPath("/").ForStatusCode(HttpStatusCode.OK)))
          .Build();
 
       await _container.StartAsync();
