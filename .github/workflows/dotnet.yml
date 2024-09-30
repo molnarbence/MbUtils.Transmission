@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TESTCONTAINER_DOCKER_NETWORK: mbutils-transmission-network
+      DOCKER_BUILDKIT: 1
 
     steps:
     - uses: actions/checkout@v4
@@ -20,6 +23,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Create docker network
-      run: docker network create mbutils-transmission-network
+      run: docker network create ${{ env.TESTCONTAINER_DOCKER_NETWORK }}
     - name: Run tests
       run: dotnet test --no-build
