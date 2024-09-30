@@ -2,7 +2,7 @@
 
 namespace MbUtils.Transmission;
 
-public sealed class TransmissionClient(HttpClient httpClient) : IDisposable
+public sealed class TransmissionClient(HttpClient httpClient) : IDisposable, ITransmissionClient
 {
    private readonly HttpClient _httpClient = httpClient;
    private string? _sessionId;
@@ -127,7 +127,7 @@ public sealed class TransmissionClient(HttpClient httpClient) : IDisposable
    }
 
    private HttpRequestMessage GetRequestMessage(string method, Dictionary<string, object>? arguments)
-   {  
+   {
       var request = new HttpRequestMessage(HttpMethod.Post, "/transmission/rpc");
 
       if (_sessionId.HasValue())
@@ -136,7 +136,7 @@ public sealed class TransmissionClient(HttpClient httpClient) : IDisposable
       }
 
       var content = JsonContent.Create(new { method, arguments });
-      
+
       request.Content = content;
 
       return request;

@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
    public static IServiceCollection AddTransmissionClient(this IServiceCollection services, TransmissionClientConfiguration configuration)
    {
       services
+         .AddSingleton<ITransmissionClient, TransmissionClient>()
          .AddHttpClient<TransmissionClient>()
          .ConfigureHttpClient((client) => TransmissionClientFactory.ConfigureHttpClient(client, configuration));
 
