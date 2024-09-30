@@ -4,7 +4,7 @@ using System.Text;
 namespace MbUtils.Transmission;
 public class TransmissionClientFactory
 {
-   public static TransmissionClient Create(TransmissionClientConfiguration configuration)
+   public static ITransmissionClient Create(TransmissionClientConfiguration configuration)
    {
       var httpClient = new HttpClient();
       ConfigureHttpClient(httpClient, configuration);

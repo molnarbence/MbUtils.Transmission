@@ -1,5 +1,5 @@
 ﻿namespace MbUtils.Transmission;
-public record RawTorrentInfo(
+internal record RawTorrentInfo(
    int Id,
    string HashString,
    string Name,

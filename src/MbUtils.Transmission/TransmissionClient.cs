@@ -2,7 +2,7 @@
 
 namespace MbUtils.Transmission;
 
-public sealed class TransmissionClient(HttpClient httpClient) : IDisposable, ITransmissionClient
+internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionClient
 {
    private readonly HttpClient _httpClient = httpClient;
    private string? _sessionId;

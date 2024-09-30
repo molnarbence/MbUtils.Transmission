@@ -5,7 +5,7 @@ using MbUtils.Transmission;
 namespace UnitTests;
 public sealed class TestsAgainstFakeApi : IDisposable, IClassFixture<FakeApiFixture>
 {
-   private readonly TransmissionClient _transmissionClient;
+   private readonly ITransmissionClient _transmissionClient;
 
    public TestsAgainstFakeApi(FakeApiFixture fakeApiFixture)
    {

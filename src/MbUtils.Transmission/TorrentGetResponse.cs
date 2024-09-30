@@ -1,10 +1,10 @@
 ﻿namespace MbUtils.Transmission;
-public class TorrentGetResponse
+internal class TorrentGetResponse
 {
    public required TorrentGetResponseArguments Arguments { get; set; }
 }
 
-public class TorrentGetResponseArguments
+internal class TorrentGetResponseArguments
 {
    public required IEnumerable<RawTorrentInfo> Torrents { get; set; }
 }
