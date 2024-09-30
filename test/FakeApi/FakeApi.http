@@ -1,0 +1,11 @@
+@FakeApi_HostAddress = http://localhost:5055
+
+POST {{FakeApi_HostAddress}}/transmission/rpc
+Accept: application/json
+Content-Type: application/json
+
+{
+  "method": "torrent-get"
+}
+
+###

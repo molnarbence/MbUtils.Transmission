@@ -1,0 +1,225 @@
+{
+	"arguments": {
+		"torrents": [
+			{
+				"activityDate": 1710613362,
+				"addedDate": 1623178995,
+				"comment": "",
+				"corruptEver": 0,
+				"creator": "uTorrent/2210",
+				"desiredAvailable": 0,
+				"doneDate": 1623180706,
+				"downloadDir": "/mnt/Transmission/Movies",
+				"downloadLimit": 100,
+				"downloadLimited": false,
+				"downloadedEver": 15039209367,
+				"error": 0,
+				"errorString": "",
+				"eta": -1,
+				"etaIdle": -1,
+				"fileStats": [
+					{
+						"bytesCompleted": 15023367501,
+						"priority": 0,
+						"wanted": true
+					}
+				],
+				"files": [
+					{
+						"bytesCompleted": 15023367501,
+						"length": 15023367501,
+						"name": "KAPCSOLAT.mkv"
+					}
+				],
+				"hashString": "63e4f145bcb301e6870287e903ef676fe08d4230",
+				"haveUnchecked": 0,
+				"haveValid": 15023367501,
+				"honorsSessionLimits": true,
+				"id": 1,
+				"isFinished": false,
+				"isPrivate": true,
+				"isStalled": true,
+				"labels": [],
+				"leftUntilDone": 0,
+				"magnetLink": "magnet:?xt=urn:btih:abc123&dn=KAPCSOLAT.mkv&tr=http%3A%2F%2Ft.example.com%3A2710%2Fabc123%2Fannounce&tr=http%3A%2F%2Ft.example.com%3A2710%2Fabc123%2Fannounce",
+				"manualAnnounceTime": -1,
+				"maxConnectedPeers": 10,
+				"metadataPercentComplete": 1,
+				"name": "KAPCSOLAT.mkv",
+				"peer-limit": 10,
+				"peers": [],
+				"peersConnected": 0,
+				"peersFrom": {
+					"fromCache": 0,
+					"fromDht": 0,
+					"fromIncoming": 0,
+					"fromLpd": 0,
+					"fromLtep": 0,
+					"fromPex": 0,
+					"fromTracker": 0
+				},
+				"peersGettingFromUs": 0,
+				"peersSendingToUs": 0,
+				"percentDone": 1,
+				"priorities": [
+					0
+				],
+				"queuePosition": 0,
+				"rateDownload": 0,
+				"rateUpload": 0,
+				"recheckProgress": 0,
+				"secondsDownloading": 2193,
+				"secondsSeeding": 48604074,
+				"seedIdleLimit": 10,
+				"seedRatioLimit": 2,
+				"seedRatioMode": 0,
+				"sizeWhenDone": 15023367501,
+				"status": 6,
+				"totalSize": 15023367501,
+				"trackers": [
+					{
+						"announce": "http://t.example.com:2710/abc123/announce",
+						"id": 0,
+						"scrape": "http://t.example.com:2710/abc123/scrape",
+						"tier": 0
+					}
+				],
+				"uploadRatio": 87.0763,
+				"uploadedEver": 1309558933475,
+				"wanted": [
+					1
+				],
+				"webseeds": [],
+				"webseedsSendingToUs": 0
+			},
+			{
+				"activityDate": 1720710765,
+				"addedDate": 1623231515,
+				"comment": "",
+				"corruptEver": 0,
+				"creator": "uTorrent/1820",
+				"desiredAvailable": 0,
+				"doneDate": 1623232358,
+				"downloadDir": "/mnt/HD/HD_a2/Transmission/Movies",
+				"downloadLimit": 100,
+				"downloadLimited": false,
+				"downloadedEver": 7913493756,
+				"error": 0,
+				"errorString": "",
+				"eta": -1,
+				"etaIdle": -1,
+				"fileStats": [
+					{
+						"bytesCompleted": 431161344,
+						"priority": 0,
+						"wanted": true
+					},
+					{
+						"bytesCompleted": 55409021,
+						"priority": 0,
+						"wanted": true
+					},
+					{
+						"bytesCompleted": 7418532339,
+						"priority": 0,
+						"wanted": true
+					},
+					{
+						"bytesCompleted": 17468,
+						"priority": 0,
+						"wanted": true
+					}
+				],
+				"files": [
+					{
+						"bytesCompleted": 431161344,
+						"length": 431161344,
+						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/hundub/trinity-contact.hun.ac3"
+					},
+					{
+						"bytesCompleted": 55409021,
+						"length": 55409021,
+						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/sample/trinity-contact.720p.mkv"
+					},
+					{
+						"bytesCompleted": 7418532339,
+						"length": 7418532339,
+						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/trinity-contact.720p.mkv"
+					},
+					{
+						"bytesCompleted": 17468,
+						"length": 17468,
+						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/trinity-contact.720p.nfo"
+					}
+				],
+				"hashString": "a277990ec68b3a9b0296e5bb6d8319e0216ebce4",
+				"haveUnchecked": 0,
+				"haveValid": 7905120172,
+				"honorsSessionLimits": true,
+				"id": 3,
+				"isFinished": false,
+				"isPrivate": true,
+				"isStalled": true,
+				"labels": [],
+				"leftUntilDone": 0,
+				"magnetLink": "magnet:?xt=urn:btih:a277990ec68b3a9b0296e5bb6d8319e0216ebce4&dn=Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY&tr=http%3A%2F%2Ft.example.com%3A2710%2Fabc123%2Fannounce&tr=http%3A%2F%2Ft.example.com%3A2710%2F6693caf751a8ef9611a6def423415c38%2Fannounce",
+				"manualAnnounceTime": -1,
+				"maxConnectedPeers": 10,
+				"metadataPercentComplete": 1,
+				"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY",
+				"peer-limit": 10,
+				"peers": [],
+				"peersConnected": 0,
+				"peersFrom": {
+					"fromCache": 0,
+					"fromDht": 0,
+					"fromIncoming": 0,
+					"fromLpd": 0,
+					"fromLtep": 0,
+					"fromPex": 0,
+					"fromTracker": 0
+				},
+				"peersGettingFromUs": 0,
+				"peersSendingToUs": 0,
+				"percentDone": 1,
+				"priorities": [
+					0,
+					0,
+					0,
+					0
+				],
+				"queuePosition": 2,
+				"rateDownload": 0,
+				"rateUpload": 0,
+				"recheckProgress": 0,
+				"secondsDownloading": 987,
+				"secondsSeeding": 55579803,
+				"seedIdleLimit": 10,
+				"seedRatioLimit": 2,
+				"seedRatioMode": 0,
+				"sizeWhenDone": 7905120172,
+				"status": 6,
+				"totalSize": 7905120172,
+				"trackers": [
+					{
+						"announce": "http://t.example.com:2710/abc123/announce",
+						"id": 0,
+						"scrape": "http://t.example.com:2710/abc123/scrape",
+						"tier": 0
+					}
+				],
+				"uploadRatio": 44.876,
+				"uploadedEver": 355126684922,
+				"wanted": [
+					1,
+					1,
+					1,
+					1
+				],
+				"webseeds": [],
+				"webseedsSendingToUs": 0
+			}
+		]
+	},
+	"result": "success"
+}
