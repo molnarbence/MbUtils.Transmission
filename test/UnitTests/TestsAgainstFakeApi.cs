@@ -41,7 +41,7 @@ public sealed class TestsAgainstFakeApi : IDisposable, IClassFixture<FakeApiFixt
    }
 
    [Fact]
-   public async Task Test_AddTorrentFileAsync()
+   public async Task Test_When_non_duplicate_AddTorrentFileAsync()
    {
       // arrange
       const string content = "abc123";
@@ -51,8 +51,25 @@ public sealed class TestsAgainstFakeApi : IDisposable, IClassFixture<FakeApiFixt
       var response = await _transmissionClient.AddTorrentFileAsync(bytes, "/mnt/downloads");
 
       // assert
-      response.Id.Should().Be("def456");
-      response.Name.Should().Be("Test torrent 101");
+      response.Result.Should().Be("added");
+      response.TorrentInfo.Id.Should().Be("def456");
+      response.TorrentInfo.Name.Should().Be("Test torrent 101");
+   }
+
+   [Fact]
+   public async Task Test_When_duplicate_AddTorrentFileAsync()
+   {
+      // arrange
+      const string content = "abc123";
+      var bytes = Encoding.UTF8.GetBytes(content);
+
+      // act
+      var response = await _transmissionClient.AddTorrentFileAsync(bytes, "/mnt/duplicate");
+
+      // assert
+      response.Result.Should().Be("duplicate");
+      response.TorrentInfo.Id.Should().Be("ghi789");
+      response.TorrentInfo.Name.Should().Be("Test torrent duplicate");
    }
 
    [Fact]

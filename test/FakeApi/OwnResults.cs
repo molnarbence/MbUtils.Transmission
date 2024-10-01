@@ -4,9 +4,9 @@ namespace FakeApi;
 
 public static class OwnResults
 {
-   public static IResult ResponseFromFile(string fileName)
+   public static async Task<IResult> ResponseFromFileAsync(string fileName)
    {
-      var fileContent = File.ReadAllText(Path.Combine("responses", fileName));
+      var fileContent = await File.ReadAllTextAsync(Path.Combine("responses", fileName));
       return Results.Content(fileContent, "application/json", Encoding.UTF8);
    }
 }

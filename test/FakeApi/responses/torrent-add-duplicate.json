@@ -1,0 +1,10 @@
+{
+  "arguments": {
+    "torrent-duplicate": {
+      "id": 101,
+      "name": "Test torrent duplicate",
+      "hashString": "ghi789"
+    }
+  },
+  "result": "success"
+}

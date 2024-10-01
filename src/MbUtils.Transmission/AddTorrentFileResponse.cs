@@ -1,2 +1,2 @@
 ﻿namespace MbUtils.Transmission;
-public record AddTorrentFileResponse(string Id, string Name);
+public record AddTorrentFileResponse(string Result, MinimalTorrentInfo TorrentInfo);

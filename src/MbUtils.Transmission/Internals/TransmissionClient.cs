@@ -87,7 +87,18 @@ internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionC
       {
          throw new InvalidOperationException($"Failed to add torrent: {response.Result}");
       }
-      return new AddTorrentFileResponse(response.Arguments.HashString, response.Arguments.Name);
+
+      if(response.Arguments.TorrentAdded is not null)
+      {
+         return new AddTorrentFileResponse("added", new MinimalTorrentInfo(response.Arguments.TorrentAdded.HashString, response.Arguments.TorrentAdded.Name));
+      }
+
+      if(response.Arguments.TorrentDuplicate is not null)
+      {
+         return new AddTorrentFileResponse("duplicate", new MinimalTorrentInfo(response.Arguments.TorrentDuplicate.HashString, response.Arguments.TorrentDuplicate.Name));
+      }
+
+      throw new InvalidOperationException("Failed to add torrent: unknown error");
    }
 
    public async Task<AddTorrentFileResponse> AddTorrentFileAsync(byte[] bytes, string downloadDir)

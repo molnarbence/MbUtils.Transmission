@@ -2,13 +2,13 @@
 
 public class TorrentGetRequestHandler : IMinimalApiRequestHandler<TorrentGetRequest>
 {
-   public Task<IResult> Handle(TorrentGetRequest request, CancellationToken cancellationToken)
+   public async Task<IResult> Handle(TorrentGetRequest request, CancellationToken cancellationToken)
    {
       if (!request.Arguments.Fields.Contains("id"))
       {
-         return Task.FromResult(Results.BadRequest("Missing 'id' field in request"));
+         return Results.BadRequest("Missing 'id' field in request");
       }
-      return Task.FromResult(OwnResults.ResponseFromFile("torrent-get.json"));
+      return await OwnResults.ResponseFromFileAsync("torrent-get.json");
    }
 }
 

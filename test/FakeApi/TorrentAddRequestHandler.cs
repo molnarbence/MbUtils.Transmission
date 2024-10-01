@@ -5,14 +5,19 @@ namespace FakeApi;
 
 public class TorrentAddRequestHandler : IMinimalApiRequestHandler<TorrentAddRequest>
 {
-   public Task<IResult> Handle(TorrentAddRequest request, CancellationToken cancellationToken)
+   public async Task<IResult> Handle(TorrentAddRequest request, CancellationToken cancellationToken)
    {
-      var selectedResult = 
-         request.Arguments.DownloadDir == "/mnt/downloads" 
-         && request.Arguments.Metainfo == Convert.ToBase64String(Encoding.UTF8.GetBytes("abc123"))
-         ? OwnResults.ResponseFromFile("torrent-add.json")
-         : Results.BadRequest();
-      return Task.FromResult(selectedResult);
+      if (request.Arguments.Metainfo != Convert.ToBase64String(Encoding.UTF8.GetBytes("abc123")))
+      {
+         return Results.BadRequest();
+      }
+
+      return request.Arguments.DownloadDir switch
+      {
+         "/mnt/downloads" => await OwnResults.ResponseFromFileAsync("torrent-add.json"),
+         "/mnt/duplicate" => await OwnResults.ResponseFromFileAsync("torrent-add-duplicate.json"),
+         _ => Results.BadRequest()
+      };
    }
 }
 
