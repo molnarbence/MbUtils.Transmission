@@ -51,7 +51,8 @@ public sealed class TestsAgainstFakeApi : IDisposable, IClassFixture<FakeApiFixt
       var response = await _transmissionClient.AddTorrentFileAsync(bytes, "/mnt/downloads");
 
       // assert
-      response.Result.Should().Be("success");
+      response.Id.Should().Be("def456");
+      response.Name.Should().Be("Test torrent 101");
    }
 
    [Fact]

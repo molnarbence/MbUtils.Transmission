@@ -41,7 +41,7 @@
 				"isStalled": true,
 				"labels": [],
 				"leftUntilDone": 0,
-				"magnetLink": "magnet:?xt=urn:btih:abc123&dn=KAPCSOLAT.mkv&tr=http%3A%2F%2Ft.example.com%3A2710%2Fabc123%2Fannounce&tr=http%3A%2F%2Ft.example.com%3A2710%2Fabc123%2Fannounce",
+				"magnetLink": "magnetlink",
 				"manualAnnounceTime": -1,
 				"maxConnectedPeers": 10,
 				"metadataPercentComplete": 1,
@@ -100,7 +100,7 @@
 				"creator": "uTorrent/1820",
 				"desiredAvailable": 0,
 				"doneDate": 1623232358,
-				"downloadDir": "/mnt/HD/HD_a2/Transmission/Movies",
+				"downloadDir": "/mnt/downloads",
 				"downloadLimit": 100,
 				"downloadLimited": false,
 				"downloadedEver": 7913493756,
@@ -134,22 +134,7 @@
 					{
 						"bytesCompleted": 431161344,
 						"length": 431161344,
-						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/hundub/trinity-contact.hun.ac3"
-					},
-					{
-						"bytesCompleted": 55409021,
-						"length": 55409021,
-						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/sample/trinity-contact.720p.mkv"
-					},
-					{
-						"bytesCompleted": 7418532339,
-						"length": 7418532339,
-						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/trinity-contact.720p.mkv"
-					},
-					{
-						"bytesCompleted": 17468,
-						"length": 17468,
-						"name": "Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY/trinity-contact.720p.nfo"
+						"name": "File01"
 					}
 				],
 				"hashString": "a277990ec68b3a9b0296e5bb6d8319e0216ebce4",
@@ -162,7 +147,7 @@
 				"isStalled": true,
 				"labels": [],
 				"leftUntilDone": 0,
-				"magnetLink": "magnet:?xt=urn:btih:a277990ec68b3a9b0296e5bb6d8319e0216ebce4&dn=Contact.1997.720p.BluRay.DTS.x264.HuN-TRiNiTY&tr=http%3A%2F%2Ft.example.com%3A2710%2Fabc123%2Fannounce&tr=http%3A%2F%2Ft.example.com%3A2710%2F6693caf751a8ef9611a6def423415c38%2Fannounce",
+				"magnetLink": "magnetlink1",
 				"manualAnnounceTime": -1,
 				"maxConnectedPeers": 10,
 				"metadataPercentComplete": 1,

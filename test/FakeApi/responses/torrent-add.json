@@ -1,0 +1,8 @@
+{
+  "arguments": {
+    "id": 101,
+    "name": "Test torrent 101",
+    "hashString": "def456"
+  },
+  "result": "success"
+}

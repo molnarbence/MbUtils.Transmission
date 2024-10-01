@@ -80,16 +80,23 @@ internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionC
    public async Task<GenericRpcResponse> StopTorrentAsync(string id)
       => await DoRequestAsync<GenericRpcResponse>("torrent-stop", new() { { "ids", new[] { id } } });
 
-   public async Task<GenericRpcResponse> AddTorrentFileAsync(string base64Content, string downloadDir)
-      => await DoRequestAsync<GenericRpcResponse>("torrent-add", new() { { "metainfo", base64Content }, { "download-dir", downloadDir } });
+   public async Task<AddTorrentFileResponse> AddTorrentFileAsync(string base64Content, string downloadDir)
+   {
+      var response = await DoRequestAsync<RawTorrentAddResponse>("torrent-add", new() { { "metainfo", base64Content }, { "download-dir", downloadDir } });
+      if(response.Result != "success")
+      {
+         throw new InvalidOperationException($"Failed to add torrent: {response.Result}");
+      }
+      return new AddTorrentFileResponse(response.Arguments.HashString, response.Arguments.Name);
+   }
 
-   public async Task<GenericRpcResponse> AddTorrentFileAsync(byte[] bytes, string downloadDir)
+   public async Task<AddTorrentFileResponse> AddTorrentFileAsync(byte[] bytes, string downloadDir)
    {
       var base64Content = Convert.ToBase64String(bytes);
       return await AddTorrentFileAsync(base64Content, downloadDir);
    }
 
-   public async Task<GenericRpcResponse> AddTorrentFileAsync(Stream stream, string downloadDir)
+   public async Task<AddTorrentFileResponse> AddTorrentFileAsync(Stream stream, string downloadDir)
    {
       using var memoryStream = new MemoryStream();
       await stream.CopyToAsync(memoryStream);

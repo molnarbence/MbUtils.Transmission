@@ -2,9 +2,9 @@
 
 public interface ITransmissionClient : IDisposable
 {
-   Task<GenericRpcResponse> AddTorrentFileAsync(byte[] bytes, string downloadDir);
-   Task<GenericRpcResponse> AddTorrentFileAsync(Stream stream, string downloadDir);
-   Task<GenericRpcResponse> AddTorrentFileAsync(string base64Content, string downloadDir);
+   Task<AddTorrentFileResponse> AddTorrentFileAsync(byte[] bytes, string downloadDir);
+   Task<AddTorrentFileResponse> AddTorrentFileAsync(Stream stream, string downloadDir);
+   Task<AddTorrentFileResponse> AddTorrentFileAsync(string base64Content, string downloadDir);
    Task<IEnumerable<NormalizedTorrentInfo>> GetTorrentsAsync();
    Task<GenericRpcResponse> StartTorrentAsync(string id);
    Task<GenericRpcResponse> StopTorrentAsync(string id);

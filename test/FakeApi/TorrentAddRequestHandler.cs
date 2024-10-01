@@ -10,7 +10,7 @@ public class TorrentAddRequestHandler : IMinimalApiRequestHandler<TorrentAddRequ
       var selectedResult = 
          request.Arguments.DownloadDir == "/mnt/downloads" 
          && request.Arguments.Metainfo == Convert.ToBase64String(Encoding.UTF8.GetBytes("abc123"))
-         ? Results.Ok(new RpcResponse())
+         ? OwnResults.ResponseFromFile("torrent-add.json")
          : Results.BadRequest();
       return Task.FromResult(selectedResult);
    }
