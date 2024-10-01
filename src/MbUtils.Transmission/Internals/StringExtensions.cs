@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace MbUtils.Transmission;
+namespace MbUtils.Transmission.Internals;
 
 internal static class StringExtensions
 {

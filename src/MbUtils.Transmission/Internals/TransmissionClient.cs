@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 
-namespace MbUtils.Transmission;
+namespace MbUtils.Transmission.Internals;
 
 internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionClient
 {
@@ -71,39 +71,32 @@ internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionC
    public async Task<IEnumerable<NormalizedTorrentInfo>> GetTorrentsAsync()
    {
       var response = await DoRequestAsync<TorrentGetResponse>("torrent-get", new() { { "fields", _listTorrentsFields } });
-
-      return response?.Arguments.Torrents.Select(NormalizeTorrentInfo) ?? [];
+      return response.Arguments.Torrents.Select(NormalizeTorrentInfo);
    }
 
-   public async Task StartTorrentAsync(string id)
-   {
-      await DoRequestAsync<object>("torrent-start", new() { { "ids", new[] { id } } });
-   }
+   public async Task<GenericRpcResponse> StartTorrentAsync(string id)
+      => await DoRequestAsync<GenericRpcResponse>("torrent-start", new() { { "ids", new[] { id } } });
 
-   public async Task StopTorrentAsync(string id)
-   {
-      await DoRequestAsync<object>("torrent-stop", new() { { "ids", new[] { id } } });
-   }
+   public async Task<GenericRpcResponse> StopTorrentAsync(string id)
+      => await DoRequestAsync<GenericRpcResponse>("torrent-stop", new() { { "ids", new[] { id } } });
 
-   public async Task AddTorrentFileAsync(string base64Content, string downloadDir)
-   {
-      await DoRequestAsync<object>("torrent-add", new() { { "metainfo", base64Content }, { "download-dir", downloadDir } });
-   }
+   public async Task<GenericRpcResponse> AddTorrentFileAsync(string base64Content, string downloadDir)
+      => await DoRequestAsync<GenericRpcResponse>("torrent-add", new() { { "metainfo", base64Content }, { "download-dir", downloadDir } });
 
-   public async Task AddTorrentFileAsync(byte[] bytes, string downloadDir)
+   public async Task<GenericRpcResponse> AddTorrentFileAsync(byte[] bytes, string downloadDir)
    {
       var base64Content = Convert.ToBase64String(bytes);
-      await AddTorrentFileAsync(base64Content, downloadDir);
+      return await AddTorrentFileAsync(base64Content, downloadDir);
    }
 
-   public async Task AddTorrentFileAsync(Stream stream, string downloadDir)
+   public async Task<GenericRpcResponse> AddTorrentFileAsync(Stream stream, string downloadDir)
    {
       using var memoryStream = new MemoryStream();
       await stream.CopyToAsync(memoryStream);
-      await AddTorrentFileAsync(memoryStream.ToArray(), downloadDir);
+      return await AddTorrentFileAsync(memoryStream.ToArray(), downloadDir);
    }
 
-   private async Task<TResponse?> DoRequestAsync<TResponse>(string operation, Dictionary<string, object>? arguments = null) where TResponse : class
+   private async Task<TResponse> DoRequestAsync<TResponse>(string operation, Dictionary<string, object>? arguments = null) where TResponse : class
    {
       // create request
       var request = GetRequestMessage(operation, arguments);
@@ -123,10 +116,11 @@ internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionC
       }
       response.EnsureSuccessStatusCode();
 
-      return await response.Content.ReadFromJsonAsync<TResponse>();
+      var body = await response.Content.ReadFromJsonAsync<TResponse>();
+      return body is null ? throw new InvalidOperationException("Failed to deserialize response body") : body;
    }
 
-   private HttpRequestMessage GetRequestMessage(string method, Dictionary<string, object>? arguments)
+   private static HttpRequestMessage GetRequestMessage(string method, Dictionary<string, object>? arguments)
    {
       var request = new HttpRequestMessage(HttpMethod.Post, "/transmission/rpc");
 

@@ -1,4 +1,4 @@
-﻿
+﻿using System.Text;
 using System.Text.Json.Serialization;
 
 namespace FakeApi;
@@ -7,20 +7,14 @@ public class TorrentAddRequestHandler : IMinimalApiRequestHandler<TorrentAddRequ
 {
    public Task<IResult> Handle(TorrentAddRequest request, CancellationToken cancellationToken)
    {
-      return Task.FromResult(Results.Ok(new RpcResponse()));
+      var selectedResult = 
+         request.Arguments.DownloadDir == "/mnt/downloads" 
+         && request.Arguments.Metainfo == Convert.ToBase64String(Encoding.UTF8.GetBytes("abc123"))
+         ? Results.Ok(new RpcResponse())
+         : Results.BadRequest();
+      return Task.FromResult(selectedResult);
    }
 }
 
-public class TorrentAddRequest : IMinimalApiRequest
-{
-   public required TorrentAddRequestArguments Arguments { get; init; }
-
-}
-
-public class TorrentAddRequestArguments
-{
-   public required string Metainfo { get; init; }
-
-   [JsonPropertyName("download-dir")]
-   public required string DownloadDir { get; init; }
-}
+public record TorrentAddRequest(TorrentAddRequestArguments Arguments) : IMinimalApiRequest;
+public record TorrentAddRequestArguments(string Metainfo, [property: JsonPropertyName("download-dir")] string DownloadDir);

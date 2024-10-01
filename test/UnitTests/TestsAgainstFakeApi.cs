@@ -48,16 +48,35 @@ public sealed class TestsAgainstFakeApi : IDisposable, IClassFixture<FakeApiFixt
       var bytes = Encoding.UTF8.GetBytes(content);
 
       // act
-      await _transmissionClient.AddTorrentFileAsync(bytes, "/mnt/downloads");
+      var response = await _transmissionClient.AddTorrentFileAsync(bytes, "/mnt/downloads");
+
+      // assert
+      response.Result.Should().Be("success");
    }
 
    [Fact]
    public async Task Test_StartTorrentAsync()
    {
       // arrange
-      const string targetId = "63e4f145bcb301e6870287e903ef676fe08d4230";
+      const string targetId = "test-target-id";
 
       // act
-      await _transmissionClient.StartTorrentAsync(targetId);
+      var response = await _transmissionClient.StartTorrentAsync(targetId);
+
+      // assert
+      response.Result.Should().Be("success");
+   }
+
+   [Fact]
+   public async Task Test_StopTorrentAsync()
+   {
+      // arrange
+      const string targetId = "test-target-id";
+
+      // act
+      var response = await _transmissionClient.StopTorrentAsync(targetId);
+
+      // assert
+      response.Result.Should().Be("success");
    }
 }

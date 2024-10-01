@@ -1,4 +1,5 @@
 ﻿using MbUtils.Transmission;
+using MbUtils.Transmission.Internals;
 using Microsoft.Extensions.Configuration;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure

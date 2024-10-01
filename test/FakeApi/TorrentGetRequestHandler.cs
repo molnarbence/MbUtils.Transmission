@@ -12,12 +12,6 @@ public class TorrentGetRequestHandler : IMinimalApiRequestHandler<TorrentGetRequ
    }
 }
 
-public class TorrentGetRequest : IMinimalApiRequest
-{
-   public required TorrentGetRequestArguments Arguments { get; set; }  
-}
+public record TorrentGetRequest(TorrentGetRequestArguments Arguments) : IMinimalApiRequest;
 
-public class TorrentGetRequestArguments
-{
-   public string[] Fields { get; set; } = [];
-}
+public record TorrentGetRequestArguments(string[] Fields);

@@ -1,20 +1,15 @@
-﻿
-namespace FakeApi;
+﻿namespace FakeApi;
+
+public record TorrentStartRequest(TorrentStartRequestArguments Arguments) : IMinimalApiRequest;
+public record TorrentStartRequestArguments(string[] Ids);
 
 public class TorrentStartRequestHandler : IMinimalApiRequestHandler<TorrentStartRequest>
 {
    public Task<IResult> Handle(TorrentStartRequest request, CancellationToken cancellationToken)
    {
-      return Task.FromResult(Results.Ok(new RpcResponse()));
+      var selectedResult = request.Arguments.Ids.Contains("test-target-id") 
+         ? Results.Ok(new RpcResponse()) 
+         : Results.NotFound("Torrent not found");
+      return Task.FromResult(selectedResult);
    }
-}
-
-public class TorrentStartRequest : IMinimalApiRequest
-{
-   public required TorrentStartRequestArguments Arguments { get; set; }
-}
-
-public class TorrentStartRequestArguments
-{
-   public string[] Ids { get; set; } = [];
 }

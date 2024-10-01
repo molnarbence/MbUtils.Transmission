@@ -33,6 +33,7 @@ app.MapPost("/transmission/rpc", async (HttpRequest request, IMediator mediator)
       "torrent-get" => Deserialize<TorrentGetRequest>(),
       "torrent-start" => Deserialize<TorrentStartRequest>(),
       "torrent-add" => Deserialize<TorrentAddRequest>(),
+      "torrent-stop" => Deserialize<TorrentStopRequest>(),
       _ => throw new NotImplementedException()
    };
 

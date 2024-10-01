@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using System.Text;
+using MbUtils.Transmission.Internals;
 
 namespace MbUtils.Transmission;
 public class TransmissionClientFactory
