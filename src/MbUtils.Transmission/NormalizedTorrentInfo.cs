@@ -12,6 +12,7 @@ public record NormalizedTorrentInfo(
     string SavePath,
     double UploadSpeed,
     double DownloadSpeed,
+    string DownloadDirectory,
     TimeSpan Eta,
     int QueuePosition,
     int ConnectedPeers,

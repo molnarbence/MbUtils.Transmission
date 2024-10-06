@@ -38,6 +38,7 @@ public sealed class TestsAgainstFakeApi : IDisposable, IClassFixture<FakeApiFixt
       // assert
       var target = torrents.First(x => x.Id == targetId);
       target.Name.Should().Be(expectedName);
+      target.DownloadDirectory.Should().Be("/mnt/Transmission/Movies");
    }
 
    [Fact]

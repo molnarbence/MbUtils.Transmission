@@ -182,6 +182,7 @@ internal sealed class TransmissionClient(HttpClient httpClient) : ITransmissionC
          SavePath: raw.DownloadDir,
          UploadSpeed: raw.RateUpload,
          DownloadSpeed: raw.RateDownload,
+         DownloadDirectory: raw.DownloadDir,
          Eta: TimeSpan.FromSeconds(raw.Eta),
          QueuePosition: raw.QueuePosition,
          ConnectedPeers: raw.PeersSendingToUs,
