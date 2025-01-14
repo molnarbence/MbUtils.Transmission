@@ -98,4 +98,17 @@ public sealed class TestsAgainstFakeApi : IDisposable, IClassFixture<FakeApiFixt
       // assert
       response.Result.Should().Be("success");
    }
+   
+   [Fact]
+   public async Task Test_RemoveTorrentAsync()
+   {
+      // arrange
+      const string targetId = "test-target-id";
+
+      // act
+      var response = await _transmissionClient.RemoveTorrentAsync(targetId, true);
+
+      // assert
+      response.Result.Should().Be("success");
+   }
 }

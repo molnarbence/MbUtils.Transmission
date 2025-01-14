@@ -23,24 +23,22 @@ app.MapPost("/transmission/rpc", async (HttpRequest request, IMediator mediator)
 
    RpcRequest rpcRequest = JsonSerializer.Deserialize<RpcRequest>(bodyAsString, jsonDeserializerOptions) ?? throw new ApplicationException("Could not deserialize request");
 
-   IMinimalApiRequest Deserialize<T>() where T : IMinimalApiRequest
-   {
-      return JsonSerializer.Deserialize<T>(bodyAsString, jsonDeserializerOptions) ?? throw new ApplicationException();
-   }
-
    IMinimalApiRequest mediatorRequest = rpcRequest.Method switch
    {
       "torrent-get" => Deserialize<TorrentGetRequest>(),
       "torrent-start" => Deserialize<TorrentStartRequest>(),
       "torrent-add" => Deserialize<TorrentAddRequest>(),
       "torrent-stop" => Deserialize<TorrentStopRequest>(),
+      "torrent-remove" => Deserialize<TorrentRemoveRequest>(),
       _ => throw new NotImplementedException()
    };
 
-   if (mediatorRequest is null)
-      return Results.BadRequest();
-
    return await mediator.Send(mediatorRequest);
+
+   IMinimalApiRequest Deserialize<T>() where T : IMinimalApiRequest
+   {
+      return JsonSerializer.Deserialize<T>(bodyAsString, jsonDeserializerOptions) ?? throw new ApplicationException();
+   }
 });
 
 app.MapGet("/", () => Results.Ok());

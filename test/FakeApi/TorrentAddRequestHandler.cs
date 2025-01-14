@@ -7,7 +7,7 @@ public class TorrentAddRequestHandler : IMinimalApiRequestHandler<TorrentAddRequ
 {
    public async Task<IResult> Handle(TorrentAddRequest request, CancellationToken cancellationToken)
    {
-      if (request.Arguments.Metainfo != Convert.ToBase64String(Encoding.UTF8.GetBytes("abc123")))
+      if (request.Arguments.Metainfo != Convert.ToBase64String("abc123"u8.ToArray()))
       {
          return Results.BadRequest();
       }

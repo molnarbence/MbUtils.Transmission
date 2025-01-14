@@ -8,4 +8,5 @@ public interface ITransmissionClient : IDisposable
    Task<IEnumerable<NormalizedTorrentInfo>> GetTorrentsAsync();
    Task<GenericRpcResponse> StartTorrentAsync(string id);
    Task<GenericRpcResponse> StopTorrentAsync(string id);
+   Task<GenericRpcResponse> RemoveTorrentAsync(string id, bool deleteLocalData);
 }
